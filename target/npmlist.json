@@ -1,0 +1,1 @@
+{"version":"1.0.0","name":"03-api-solid","dependencies":{"@prisma/client":{"version":"4.13.0"},"bcryptjs":{"version":"2.4.3"},"dotenv":{"version":"16.0.3"},"fastify":{"version":"4.15.0"},"prisma":{"version":"4.13.0"},"zod":{"version":"3.21.4"}}}
