@@ -5,6 +5,8 @@ import { CheckIn } from '@prisma/client'
 import { MaxDistanceError } from './errors/max-distance-error'
 import { MaxNumberOfCheckInsError } from './errors/max-numbers-of-check-ins-error'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
+import dayjs from 'dayjs'
+import { date } from 'zod'
 
 interface CheckInUseCaseRequest {
   checkInId: string
@@ -24,6 +26,15 @@ export class CheckInUseCase {
 
     if (!checkIn) {
       throw new ResourceNotFoundError()
+    }   
+
+    const distanceInMinutesFromCheckins = dayjs(new Date()).diff(
+      checkIn.created_at,
+      "minutes"
+    )
+
+    if (distanceInMinutesFromCheckins) {
+      throw new Error()
     }
 
     checkIn.validated_at = new Date()
