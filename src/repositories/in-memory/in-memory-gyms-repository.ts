@@ -1,8 +1,9 @@
 import { Gym, Prisma } from '@prisma/client'
 import { randomUUID } from 'crypto'
-import { GymsRepository } from '../gyms-repository'
+import { FindManyNearByParams, GymsRepository } from '../gyms-repository'
 
 export class InMemoryGymsRepository implements GymsRepository {
+
 
   public items: Gym[] = []
 
@@ -14,6 +15,10 @@ export class InMemoryGymsRepository implements GymsRepository {
     }
 
     return gym
+  }
+
+  async findManyNearBy(params: FindManyNearByParams): Promise<Gym[]> {
+    return this.items
   }
 
   async searchMany(query: string, page: number): Promise<Gym[]> {
