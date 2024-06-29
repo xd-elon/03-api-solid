@@ -16,7 +16,7 @@ interface CheckInCaseResponse {
   checkIn: CheckIn
 }
 
-export class CheckInUseCase {
+export class ValidadeCheckInUseCase {
   constructor(private checkInsRepository: CheckInsRepository) {}
 
   async execute({
