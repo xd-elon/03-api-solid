@@ -1,30 +1,11 @@
+import { makeGetUserProfileUseCase } from '@/use-cases/factories/make-get-user-profile-use-case'
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
 
-export async function profile(
-  request: FastifyRequest,
-  reply: FastifyReply,
-) {
+export async function profile( request: FastifyRequest, reply: FastifyReply) {
+  await request.jwtVerify()
 
-  /* 
+  const getUserProfile = makeGetUserProfileUseCase()
   
-  try {
-    const authenticateUseCase = makeAuthenticateUseCase()
-
-    await authenticateUseCase.execute({
-      email,
-      password,
-    })
-  } catch (error) {
-    if (error instanceof InvalidCredentialsError) {
-      return reply.status(400).send({ message: error.message })
-    }
-
-    throw error
-  }
-
-  */
-
-
   return reply.status(201).send()
 }

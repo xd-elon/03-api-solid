@@ -8,7 +8,7 @@ import { env } from './env'
 export const app = fastify()
 
 app.register(fastifyJwt, {
-  secret: env.JWT,
+  secret: env.JWT_SECRET,
 })
 
 app.register(appRoutes)
