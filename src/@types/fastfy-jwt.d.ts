@@ -1,9 +1,9 @@
 import '@fastify/jwt'
 
 declare module '@fastify/jwt' {
-  export interface fastifyJWT {
+  export interface FastifyJWT {
     user: {
-      sub: number
+      sub: string
     }
   }
 }
